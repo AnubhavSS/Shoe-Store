@@ -4,6 +4,8 @@ import React from 'react'
 import Link from 'next/link'
 import Lottie from 'lottie-react'
 import shoe_ani from './shoe_ani.json'
+
+
 const About = () => {
   return (
     <section className="flex items-center bg-stone-100 h-[95vh] font-poppins dark:bg-gray-800 ">

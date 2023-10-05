@@ -8,6 +8,8 @@ import CartItem from "@/components/CartItem";
 import Lottie from "lottie-react";
 import emptyCart from "./emptyCart.json";
 
+
+
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const subTotal = useMemo(() => {

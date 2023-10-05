@@ -1,5 +1,11 @@
 import React from 'react'
 
+export const metadata = {
+  title: 'ShoeStreet-Contact',
+  description: 'Contact Us',
+}
+
+
 const Contact = () => {
   return (
 <section className="text-gray-600 body-font relative">
