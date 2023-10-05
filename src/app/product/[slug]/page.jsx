@@ -26,7 +26,7 @@ const [sizeSelected, setsizeSelected] = useState('')
       try {
         // Send a GET request to the specified API endpoint (baseUrl + '/api/getProducts')
         const response = await fetch(
-          "http://localhost:3000" + `/api/getOneProduct?title=${params?.slug}`
+          "https://shoestreet.netlify.app" + `/api/getOneProduct?title=${params?.slug}`
         );
 
         // Check if the response status is OK (status code 200)

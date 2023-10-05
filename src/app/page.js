@@ -16,7 +16,7 @@ export default function Home() {
     async function fetchData() {
       try {
         // Send a GET request to the specified API endpoint (baseUrl + '/api/getProducts')
-        const response = await fetch('' + '/api/getProducts');
+        const response = await fetch('https://shoestreet.netlify.app' + '/api/getProducts');
 
         // Check if the response status is OK (status code 200)
         if (response.ok) {

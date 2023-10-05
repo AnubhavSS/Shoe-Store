@@ -13,7 +13,7 @@ const Category = ({ params }) => {
       try {
         // Send a GET request to the specified API endpoint (baseUrl + '/api/getProducts')
         const response = await fetch(
-          "http://localhost:3000" + `/api/getCategory?category=${params?.slug}`
+          "https://shoestreet.netlify.app" + `/api/getCategory?category=${params?.slug}`
         );
 
         // Check if the response status is OK (status code 200)
