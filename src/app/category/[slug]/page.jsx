@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import Wrapper from "@/components/Wrapper";
 import { baseUrl } from "@/app/page";
+import { fetchCategory } from "@/app/service";
 
 const Category = ({ params }) => {
   const [cardInfo, setcardInfo] = useState([]);
@@ -12,20 +13,17 @@ const Category = ({ params }) => {
     async function fetchData() {
       try {
         // Send a GET request to the specified API endpoint (baseUrl + '/api/getProducts')
-        const response = await fetch(
-          "https://shoestreet.netlify.app" + `/api/getCategory?category=${params?.slug}`
-        );
+       const data= await fetchCategory(params?.slug)
 
         // Check if the response status is OK (status code 200)
-        if (response.ok) {
+     
           // Parse the JSON response data
-          const data = await response.json();
+      
           // console.log(data); // Log the fetched data to the console
           setcardInfo(data);
-        } else {
+       
           // Handle the case where the response status is not OK
-          console.error("Failed to fetch data");
-        }
+        
       } catch (error) {
         // Handle any errors that occur during the fetch operation
         console.error("An error occurred:", error);

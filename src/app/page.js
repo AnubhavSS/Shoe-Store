@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 import HeroBanner from "@/components/HeroBanner";
 import ProductCard from "@/components/ProductCard";
 import Wrapper from "@/components/Wrapper";
-
+import { fetchData } from "./service";
 // export const baseUrl=window.location.href
 
 export default function Home() {
@@ -13,21 +13,19 @@ export default function Home() {
 
   useEffect(() => {
     // Define an async function to fetch data from the API
-    async function fetchData() {
+    
+    async function fetchdata() {
       try {
         // Send a GET request to the specified API endpoint (baseUrl + '/api/getProducts')
-        const response = await fetch('https://shoestreet.netlify.app' + '/api/getProducts');
+        const data = await fetchData();
 
         // Check if the response status is OK (status code 200)
-        if (response.ok) {
+        
           // Parse the JSON response data
-          const data = await response.json();
+         
           console.log(data); // Log the fetched data to the console
           setcardInfo(data)
-        } else {
-          // Handle the case where the response status is not OK
-          console.error('Failed to fetch data');
-        }
+       
       } catch (error) {
         // Handle any errors that occur during the fetch operation
         console.error('An error occurred:', error);
@@ -35,7 +33,7 @@ export default function Home() {
     }
 
     // Call the fetchData function to initiate the data fetch when the component mounts
-    fetchData();
+    fetchdata();
   }, []); // The empty dependency array ensures this effect runs only once
 
   return (
@@ -55,7 +53,7 @@ export default function Home() {
 
           {/* product grid start */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0 ">
-          { cardInfo.map((item)=>
+          { cardInfo?.map((item)=>
             <ProductCard cardInfo={item}/>)}
           
           </div>

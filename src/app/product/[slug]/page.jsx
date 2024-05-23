@@ -8,6 +8,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { addToCart } from "../../../../store/cartSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { fetchOneProduct } from "@/app/service";
 
 const size=["India-6","India-7","India-8","India-9","India-10",]
 
@@ -25,20 +26,15 @@ const [sizeSelected, setsizeSelected] = useState('')
     async function fetchData() {
       try {
         // Send a GET request to the specified API endpoint (baseUrl + '/api/getProducts')
-        const response = await fetch(
-          "https://shoestreet.netlify.app" + `/api/getOneProduct?title=${params?.slug}`
-        );
-
+       
+const data= await fetchOneProduct(params?.slug)
         // Check if the response status is OK (status code 200)
-        if (response.ok) {
+  
           // Parse the JSON response data
-          const data = await response.json();
-          console.log(data,"de"); // Log the fetched data to the console
+
+        
           setcardInfo(data);
-        } else {
-          // Handle the case where the response status is not OK
-          console.error("Failed to fetch data");
-        }
+       
       } catch (error) {
         // Handle any errors that occur during the fetch operation
         console.error("An error occurred:", error);
