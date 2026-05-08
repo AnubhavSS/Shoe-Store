@@ -1,13 +1,13 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import React, { useMemo,Suspense,lazy } from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import Wrapper from "@/components/Wrapper";
 import CartItem from "@/components/CartItem";
-const Lottie=lazy(()=>import('lottie-react'))
 import Loading from "@/app/loading";
 import emptyCart from "./emptyCart.json";
+const Lottie= dynamic(() => import('lottie-react'), { ssr: false });
 
 
 

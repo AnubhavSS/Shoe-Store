@@ -1,10 +1,10 @@
 "use client"
-
+import dynamic from "next/dynamic";
 import React,{Suspense,lazy} from 'react'
 import Link from 'next/link'
 import shoe_ani from './shoe_ani.json'
 import Loading from "@/app/loading";
-const Lottie=lazy(()=>import('lottie-react'))
+const Lottie= dynamic(() => import('lottie-react'), { ssr: false });
 
 const About = () => {
   return (
