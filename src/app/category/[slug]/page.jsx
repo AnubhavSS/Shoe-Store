@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import ProductCard from "@/components/ProductCard";
+import React, { useEffect, useState,Suspense,lazy } from "react";
+const ProductCard=lazy(()=>import('@/components/ProductCard'))
+import Loading from "@/app/loading";
 import Wrapper from "@/components/Wrapper";
-import { baseUrl } from "@/app/page";
 import { fetchCategory } from "@/app/service";
 
 const Category = ({ params }) => {
@@ -47,7 +47,10 @@ const Category = ({ params }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-14 px-5 md:px-0 ">
           {cardInfo &&
             cardInfo.map((item) => (
-              <ProductCard cardInfo={item} key={item?._id} />
+             
+             <Suspense fallback={<Loading />} key={item?._id}>
+               <ProductCard cardInfo={item} key={item?._id} />
+             </Suspense>
             ))}
         </div>
       </Wrapper>

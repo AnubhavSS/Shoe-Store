@@ -1,14 +1,15 @@
 "use client"
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,lazy,Suspense} from "react";
 import Wrapper from "@/components/Wrapper";
-import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
 import { IoMdHeartEmpty } from "react-icons/io";
-import RelatedProducts from "@/components/RelatedProducts";
 import { useDispatch,useSelector } from "react-redux";
 import { addToCart } from "../../../../store/cartSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchOneProduct } from "@/app/service";
+import Loading from "@/app/loading";
+const ProductDetailsCarousel = lazy(()=>import("@/components/ProductDetailsCarousel"))
+const RelatedProducts = lazy(()=>import("@/components/RelatedProducts"))
 
 const size=["India-6","India-7","India-8","India-9","India-10",]
 
@@ -46,7 +47,7 @@ const data= await fetchOneProduct(params?.slug)
   }, []);
 
 const addToCartItem=(value)=>{
-console.log(value)
+
   if(sizeSelected===''){
     toast.warn('Please select a size', {
       position: "top-center",
@@ -93,7 +94,9 @@ theme="light"
         <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
           {/* Left column start */}
           <div className=" w-auto mt-5">
-            <ProductDetailsCarousel img={cardInfo[0]?.image}/>
+            <Suspense fallback={<Loading />}>
+                           <ProductDetailsCarousel img={cardInfo[0]?.image} />
+            </Suspense>
           </div>
           {/* Right column start */}
 
@@ -166,7 +169,9 @@ theme="light"
           {/* Right column end */}
         </div>
 
-<RelatedProducts/>
+        <Suspense fallback={<Loading />}>
+          <RelatedProducts />
+        </Suspense>
 
       </Wrapper>
     </div>

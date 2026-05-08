@@ -23,7 +23,7 @@ export default function Home() {
         
           // Parse the JSON response data
          
-          console.log(data); // Log the fetched data to the console
+         
           setcardInfo(data)
        
       } catch (error) {
@@ -54,7 +54,7 @@ export default function Home() {
           {/* product grid start */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0 ">
           { cardInfo?.map((item)=>
-            <ProductCard cardInfo={item}/>)}
+            <ProductCard cardInfo={item} key={item.id} />)}
           
           </div>
       </Wrapper>

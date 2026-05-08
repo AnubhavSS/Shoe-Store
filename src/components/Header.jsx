@@ -46,7 +46,7 @@ const Header = () => {
     >
       <Wrapper className={"h-[60px] flex justify-between items-center"}>
         <Link href={"/"}>
-          <Image src="/assets/shoeStreet.png" width={150} height={120} />
+          <Image src="/assets/shoeStreet.png" width={150} height={120} alt="logo" />
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
         {mobileMenu && (

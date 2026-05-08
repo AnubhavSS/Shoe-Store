@@ -12,9 +12,9 @@ const ProductDetailsCarousel = ({img}) => {
           showStatus={false}
           thumbWidth={60}
           className="productCarousel">
-          <img src={img}/>
-          <img src='../assets/slide2.jpg'/>
-          <img src='../assets/slide3.jpg'/>
+          <img src={img} alt="product1" loading="lazy" />
+          <img src='../assets/slide2.jpg' alt="product2" loading="lazy" />
+          <img src='../assets/slide3.jpg' alt="product3" loading="lazy" />
           </Carousel></div>
   )
 }

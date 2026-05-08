@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo,Suspense,lazy } from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import Wrapper from "@/components/Wrapper";
 import CartItem from "@/components/CartItem";
-import Lottie from "lottie-react";
+const Lottie=lazy(()=>import('lottie-react'))
+import Loading from "@/app/loading";
 import emptyCart from "./emptyCart.json";
 
 
@@ -72,7 +73,9 @@ const Cart = () => {
         ) : (
           // Empty cart
           <div className="flex-[2] flex flex-col items-center pb-[50px] md:-mt-14">
-            <Lottie animationData={emptyCart} loop={true} />
+            <Suspense fallback={<Loading />}>
+              <Lottie animationData={emptyCart} loop={true} />
+            </Suspense>
             <span className="text-xl font-bold">Your cart is empty</span>
             <span className="text-center mt-2">
               Looks like you have not added anything in your cart.

@@ -38,6 +38,7 @@ const HeroBanner = () => {
           <img
             src="./assets/slide1.jpg"
             className=" aspect-[15/10] md:aspect-auto object-cover"
+            alt="banner1"
           />
           <div className="px-[15px] md:px-[10px] py-[10px] md:py-[12px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[20px] uppercase font-medium cursor-pointer hover:opacity-90">
             Shop now
@@ -47,6 +48,7 @@ const HeroBanner = () => {
           <img
             src="./assets/slide2.jpg"
             className=" aspect-[15/10] md:aspect-auto object-cover"
+            alt="banner2"
           />
           <div className="px-[15px] md:px-[10px] py-[10px] md:py-[12px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[20px] uppercase font-medium cursor-pointer hover:opacity-90">
             Shop now
@@ -56,6 +58,7 @@ const HeroBanner = () => {
           <img
             src="./assets/slide3.jpg"
             className=" aspect-[15/10] md:aspect-auto object-cover"
+            alt="banner3"
           />
           <div className="px-[15px] md:px-[10px] py-[10px] md:py-[12px] font-oswald bg-white absolute bottom-[25px] md:bottom-[75px] left-0 text-black/[0.9] text-[15px] md:text-[20px] uppercase font-medium cursor-pointer hover:opacity-90">
             Shop now

@@ -1,10 +1,10 @@
 "use client"
 
-import React from 'react'
+import React,{Suspense,lazy} from 'react'
 import Link from 'next/link'
-import Lottie from 'lottie-react'
 import shoe_ani from './shoe_ani.json'
-
+import Loading from "@/app/loading";
+const Lottie=lazy(()=>import('lottie-react'))
 
 const About = () => {
   return (
@@ -12,7 +12,9 @@ const About = () => {
         <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
             <div className="flex flex-wrap ">
                 <div className=" px-4 mb-4  lg:w-1/2 lg:mb-0">
-                    <Lottie animationData={shoe_ani} loop={true}/>
+                    <Suspense fallback={<Loading />}>
+                        <Lottie animationData={shoe_ani} loop={true} />
+                    </Suspense>
                 </div>
                 <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0 ">
                     <h2 className="mb-4 text-4xl font-semibold text-purple-500 dark:text-gray-300">
