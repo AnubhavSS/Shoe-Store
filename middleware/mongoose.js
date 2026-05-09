@@ -1,31 +1,33 @@
 import mongoose from "mongoose";
 
-// Define a function to connect to the database
-const connectDb = async (handler) => {
-  // Check if the connection is already established
-  if (mongoose.connections[0].readyState === 1) {
-    // console.log("Database connection is already established.");
-    return handler;
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  throw new Error("Please define the MONGO_URI environment variable");
+}
+
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = {
+    conn: null,
+    promise: null,
+  };
+}
+
+const connectDb = async () => {
+  if (cached.conn) {
+    return cached.conn;
   }
 
-  // Set up event listeners to monitor the connection status
-  mongoose.connection.on("connected", () => {
-    // console.log("Connected to the database.");
-  });
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGO_URI, {
+      bufferCommands: false,
+    });
+  }
 
-  mongoose.connection.on("error", (err) => {
-    // console.error("Database connection error:", err);
-  });
-
-  mongoose.connection.on("disconnected", () => {
-    // console.log("Disconnected from the database.");
-  });
-
-  // Attempt to connect to the MongoDB database
-  await mongoose.connect('mongodb+srv://chikkubhav:DlrzVPIBLRwwNfrl@shoestore.3j63fzw.mongodb.net/ShoeStore?retryWrites=true&w=majority');
-
-  // Return the handler function
-  return handler;
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
 
 export default connectDb;

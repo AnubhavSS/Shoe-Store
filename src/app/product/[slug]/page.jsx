@@ -76,7 +76,7 @@ const addToCartItem=(value)=>{
 }
 
   return (
-    <div classNmae="w-full md:py-20">
+    <div className="w-full md:py-20">
 
 <ToastContainer
 position="top-center"
